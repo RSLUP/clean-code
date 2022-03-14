@@ -1,0 +1,8 @@
+<form [formGroup]="myFG">
+  <label for="x">Number1: </label><br />
+  <input type="number" id="x" name="x" [formControl]="x" /><br />
+  <label for="y">Number2:</label><br />
+  <input type="number" id="y" name="y" [formControl]="y" /><br /><br />
+  <input type="button" value="Display Sum" (click)="myFunc()" /><br />
+  Result: {{ result }}
+</form>
