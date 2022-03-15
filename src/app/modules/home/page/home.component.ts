@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from "@angular/forms";
+import { CalculationService } from "../service/calculation.service";
 
 @Component({
   selector: "app-home",
@@ -15,9 +16,12 @@ export class HomeComponent implements OnInit {
   calFormGroup: FormGroup;
   number1FormControl = new FormControl("", Validators.required);
   number2FormControl = new FormControl("", Validators.required);
-  result = "";
+  result = 0;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private calculationService: CalculationService
+  ) {
     this.calFormGroup = this.formBuilder.group({});
 
     this.calFormGroup.addControl("number1", this.number1FormControl);
@@ -27,6 +31,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   calculateSum() {
-    this.result = this.number1FormControl.value + this.number2FormControl.value;
+    this.result = this.calculationService.getSum(
+      this.number1FormControl.value,
+      this.number2FormControl.value
+    );
   }
 }
