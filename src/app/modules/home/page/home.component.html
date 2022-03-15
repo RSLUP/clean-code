@@ -1,0 +1,18 @@
+<form [formGroup]="calFormGroup">
+  <label for="x">Number1: </label><br />
+  <input
+    type="number"
+    id="number1"
+    name="number1"
+    [formControl]="number1FormControl"
+  /><br />
+  <label for="y">Number2:</label><br />
+  <input
+    type="number"
+    id="nmber2"
+    name="number2"
+    [formControl]="number2FormControl"
+  /><br /><br />
+  <input type="button" value="Display Sum" (click)="calculateSum()" /><br />
+  Result: {{ result }}
+</form>
